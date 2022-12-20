@@ -5,7 +5,7 @@ let config = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 200 }
+      gravity: { y: 1000 }
     }
   },
   scene: {
@@ -15,13 +15,15 @@ let config = {
   }
 }
 
+
 function preload() {
   this.load.setBaseURL('http://labs.phaser.io')
 
   this.load.image('sky', 'assets/skies/space3.png')
   // this.load.image('player', 'assets/sprites/phaser3-logo.png')
-  // this.load.image('red', 'assets/particles/red.png')
+  this.load.image('red', 'assets/particles/yelow.png')
 }
+
 
 function create() {
   this.add.image(400, 300, 'sky')
@@ -41,15 +43,16 @@ function create() {
 
   // emitter.startFollow(player)
 
-  addKeys(this.input)
-
-  addPointerEvents(this.input)
-
+  addEvents(this.input)
+  addColumn(this)
 }
+
 
 function update() {
-  keydown()
+  // if (time % 2500 < 17)
+  //   addColumn(this)
 }
+
 
 // Player
 let player

@@ -1,12 +1,11 @@
-function addKeys(input) {
-  spaceBar = input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
-}
+function addEvents(input) {
+  input.keyboard.on('keydown', keydown)
 
-function addPointerEvents(input) {
   input.on('pointerdown', jump)
 }
 
-function keydown() {
-  if (spaceBar.isDown)
+
+function keydown(evt) {
+  if (evt.keyCode === 32 || evt.keyCode === 38) 
     jump()
 }
