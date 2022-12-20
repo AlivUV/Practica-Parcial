@@ -49,8 +49,7 @@ function create() {
 
 
 function update() {
-  // if (time % 2500 < 17)
-  //   addColumn(this)
+
 }
 
 

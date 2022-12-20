@@ -3,6 +3,11 @@ function jump() {
 }
 
 
+function gameOver() {
+  this.scene.restart()
+}
+
+
 function addBlock(i, gap, column) {
   if (Math.abs(i - gap) > 1) {
     const cube = column.create(800, i * 50 + 25, 'cube')
@@ -23,5 +28,6 @@ function addColumn(obj) {
   column.checkWorldBounds = true
   column.outOfBoundsKill = true
 
+  obj.physics.add.overlap(player, column, gameOver, null, obj)
   obj.time.delayedCall(2000 + Math.random() * 1000, addColumn, [obj], obj)
 }
