@@ -4,14 +4,26 @@ function jump() {
 
 
 function gameOver() {
-  this.scene.restart()
+  this.time.delayedCall(100, () => { this.scene.start('gameOver') }, [], this)
 }
 
 
-function addBlock(i, gap, column) {
+function addAsteroid(i, gap, column, obj) {
   if (Math.abs(i - gap) > 1) {
-    const cube = column.create(800, i * 50 + 25, 'cube')
-    cube.body.allowGravity = false
+    const asteroid = column.create(820, i * 50 + 25, 'asteroid')
+
+    asteroid.scale = 0.4
+
+    obj.anims.create({
+      key: 'roll',
+      frames: obj.anims.generateFrameNumbers('asteroid', { start: 28, end: 64 }),
+      frameRate: 10,
+      repeat: -1
+    })
+
+    asteroid.play('roll', true)
+
+    asteroid.body.allowGravity = false
   }
 }
 
@@ -21,7 +33,7 @@ function addColumn(obj) {
   const gap = Math.floor(Math.random() * 10) + 1
 
   for (let i = 0; i < 12; i++) {
-    addBlock(i, gap, column)
+    addAsteroid(i, gap, column, obj)
   }
 
   column.setVelocityX(-100)
