@@ -1,4 +1,4 @@
-# Practica-Parcial
+# Práctica-Parcial
 
 ### Álvaro Portocarrero - 1922171.
 
